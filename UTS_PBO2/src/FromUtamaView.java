@@ -18,14 +18,8 @@ public class FromUtamaView extends javax.swing.JFrame {
     public FromUtamaView() {
         initComponents();
         
-        // Menambahkan ActionListener untuk tombol logout
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            // Menutup form utama dan membuka form login lagi
-            new LoginView().setVisible(true);
-            dispose();  // Menutup form utama
-        }
-    });
+      setSize(800, 800); // Menetapkan ukuran form
+        setLocationRelativeTo(null); // Menempatkan form di tengah layar
     }
 
     /**
@@ -39,16 +33,15 @@ public class FromUtamaView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonLogout = new javax.swing.JButton();
+        jButtonKeluar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButtonFormDatabarang = new javax.swing.JButton();
         jButtonFormLaporan = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuDataBarang = new javax.swing.JMenu();
+        jMenu = new javax.swing.JMenu();
+        jMenuItemLaporanStok = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -61,12 +54,17 @@ public class FromUtamaView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 51));
         jLabel1.setText("APLIKASI INVENTARIS BARANG");
 
-        jButton1.setText("Logout");
-
-        jButton2.setText("Keluar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLogout.setText("Logout");
+        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonLogoutActionPerformed(evt);
+            }
+        });
+
+        jButtonKeluar.setText("Keluar");
+        jButtonKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKeluarActionPerformed(evt);
             }
         });
 
@@ -92,32 +90,31 @@ public class FromUtamaView extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(304, 304, 304))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(244, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(272, 272, 272)
+                                .addGap(36, 36, 36)
                                 .addComponent(jButtonFormDatabarang))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(281, 281, 281)
-                                .addComponent(jButton2)))
+                                .addGap(45, 45, 45)
+                                .addComponent(jButtonKeluar)))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(jButtonLogout)
                             .addComponent(jButtonFormLaporan))))
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(230, 230, 230))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(87, 87, 87)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
@@ -127,39 +124,30 @@ public class FromUtamaView extends javax.swing.JFrame {
                     .addComponent(jButtonFormLaporan))
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(156, Short.MAX_VALUE))
+                    .addComponent(jButtonKeluar)
+                    .addComponent(jButtonLogout))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
-        jMenu3.setText("Data Master");
+        jMenuDataBarang.setText("Data Barang");
+        jMenuBar2.add(jMenuDataBarang);
 
-        jMenuItem2.setText("Form Data Barang");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu.setText("Laporan");
+        jMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem2);
-
-        jMenuBar2.add(jMenu3);
-
-        jMenu6.setText("Stok dan Laporan");
-        jMenu6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6ActionPerformed(evt);
+                jMenuActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setText("cetak Stok");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemLaporanStok.setText("Laporan Stok");
+        jMenuItemLaporanStok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemLaporanStokActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem1);
+        jMenu.add(jMenuItemLaporanStok);
 
-        jMenuBar2.add(jMenu6);
+        jMenuBar2.add(jMenu);
 
         jMenu7.setText("Home");
         jMenu7.addActionListener(new java.awt.event.ActionListener() {
@@ -191,22 +179,32 @@ public class FromUtamaView extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(780, 554));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonFormDatabarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFormDatabarangActionPerformed
         // TODO add your handling code here:
-        DataBarangView v = new DataBarangView();
-        v.setVisible(true);
+        this.dispose(); // Menutup form saat ini
+
+    // Membuka form LaporanView
+    DataBarangView dataBarang = new DataBarangView();
+    dataBarang.setVisible(true); // Menampilkan form LaporanView
+        
     }//GEN-LAST:event_jButtonFormDatabarangActionPerformed
 
     private void jButtonFormLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFormLaporanActionPerformed
         // TODO add your handling code here:
-        LaporanView v = new LaporanView();
-        v.setVisible(true);
+         // Menutup form DataBarangView
+    this.dispose(); // Menutup form saat ini
+
+    // Membuka form LaporanView
+    LaporanView laporanView = new LaporanView();
+    laporanView.setVisible(true); // Menampilkan form LaporanView
+        
     }//GEN-LAST:event_jButtonFormLaporanActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKeluarActionPerformed
         // TODO add your handling code here:
       
        // Menampilkan dialog konfirmasi
@@ -221,30 +219,39 @@ public class FromUtamaView extends javax.swing.JFrame {
         System.exit(0); // Keluar dari aplikasi
     }
     // Jika pengguna memilih NO, tidak ada tindakan yang diambil
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonKeluarActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
         // TODO add your handling code here:
-        DataBarangView v = new DataBarangView();
-        v.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        this.dispose(); // Menutup form utama
+        // Menutup form utama dan membuka form login
+    new LoginView().setVisible(true); // Membuka form login
+    
+    }//GEN-LAST:event_jButtonLogoutActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemLaporanStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLaporanStokActionPerformed
         // TODO add your handling code here:
-        LaporanView v = new LaporanView();
-        v.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        // Menutup form DataBarangView
+        this.dispose(); // Menutup form saat ini
 
-    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+        // Membuka form LaporanView
+        LaporanView laporanView = new LaporanView();
+        laporanView.setVisible(true); // Menampilkan form LaporanView
+    }//GEN-LAST:event_jMenuItemLaporanStokActionPerformed
+
+    private void jMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuActionPerformed
         // TODO add your handling code here:
-        LaporanView v = new LaporanView();
-        v.setVisible(true);
-    }//GEN-LAST:event_jMenu6ActionPerformed
+
+    }//GEN-LAST:event_jMenuActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        FromUtamaView v = new FromUtamaView();
-        v.setVisible(true);
+        // Menutup form DataBarangView
+        this.dispose(); // Menutup form saat ini
+
+        // Membuka form menu utama
+        FromUtamaView menuUtama = new FromUtamaView();
+        menuUtama.setVisible(true); // Menampilkan form menu utama
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
@@ -289,19 +296,18 @@ public class FromUtamaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonFormDatabarang;
     private javax.swing.JButton jButtonFormLaporan;
+    private javax.swing.JButton jButtonKeluar;
+    private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu jMenuDataBarang;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemLaporanStok;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
